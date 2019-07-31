@@ -17,6 +17,7 @@ var liri = {
     concertThis: function() {
         // Create an empty variable for holding the artist or band name
         var artistBandName = "";
+        // key = '13fd340b5e8b1dc6eec23eccd52837bd'
         // Loop through all the words in the node argument
         // And do a little for-loop magic to handle the inclusion of "+"s
         for (var i = 3; i < nodeArgs.length; i++) {
