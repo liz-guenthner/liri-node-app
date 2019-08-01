@@ -161,6 +161,7 @@ var liri = {
             console.log(error.config);
         });
     },
+
     doWhatItSays: function() {
         // read the "fs" variable and put data in "random.txt" file, can return error and data
         fs.readFile('random.txt', 'utf8', function(err, data) {
@@ -168,12 +169,25 @@ var liri = {
             if (err) {
                 return console.log(err);
             }
-            // declare variable "songTitle"
-            var songTitle = data();
+            // Break the string down by comma separation and store the contents into the output array.
+            var outputArray = data.split(",");
+            var firstData = outputArray[0].slice(2);
+            var secondData = outputArray[1].replace(/"/g, "").replace(/\s/g, "-");
+            
+            console.log(firstData);
+            console.log(secondData);
+            // data.slice(1);
+            
+            // var newTaskArray = [];
 
-            // console.log the sum of the elements
-            console.log("");
+            outputArray.forEach(function(data) {
+                
+                
+            });
+
         });
+        // fs.appendFileSync(outputArray[0], outputArray[1]);
+        // console.log()
     }
 };
 
