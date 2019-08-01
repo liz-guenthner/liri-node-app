@@ -13,7 +13,7 @@ var nodeArgs = process.argv;
 var liri = {
     concertThis: function() {
         // Create an empty variable for holding the artist or band name
-        var artistBandName = "";
+        var artistBandName = process.argv[3];
         
         // Loop through all the words in the node argument
         // And do a little for-loop magic to handle the inclusion of "+"s
@@ -62,9 +62,9 @@ var liri = {
         });
     },
 
-    spotifyThisSong: function() {
+    spotifyThisSong: function(songName) {
         // Create an empty variable for holding the song name
-        var songName = "";
+        var songName = process.argv[3];
 
         // Loop through all the words in the node argument
         // And do a little for-loop magic to handle the inclusion of "+"s
@@ -75,7 +75,6 @@ var liri = {
                 songName = nodeArgs[i];
             }
         }
-        
         // Create an empty variable for holding the client id and client secret
  
         var spotify = new Spotify(keys.spotify);
@@ -171,23 +170,23 @@ var liri = {
             }
             // Break the string down by comma separation and store the contents into the output array.
             var outputArray = data.split(",");
-            var firstData = outputArray[0].slice(2);
-            var secondData = outputArray[1].replace(/"/g, "").replace(/\s/g, "-");
+            var task = outputArray[0];
+            var dataPoint = outputArray[1].replace(/"/g, "").replace(/\s/g, "+");
             
-            console.log(firstData);
-            console.log(secondData);
-            // data.slice(1);
-            
-            // var newTaskArray = [];
+            console.log(task);
+            console.log(dataPoint);
 
-            outputArray.forEach(function(data) {
-                
-                
-            });
-
+            if (task === "spotify-this-song") {
+                // runSpotify(dataPoint);
+                console.log("spotify is in random.txt file!");
+            } else if (task === "concert-this") {
+                // runConcert(dataPoint);
+                console.log("concert is in random.txt file!");
+            } else {
+                // runMovie(dataPoint);
+                console.log("movie is in random.txt file!");
+            }
         });
-        // fs.appendFileSync(outputArray[0], outputArray[1]);
-        // console.log()
     }
 };
 
