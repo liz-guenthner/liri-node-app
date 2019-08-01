@@ -78,12 +78,8 @@ var liri = {
         
         // Create an empty variable for holding the client id and client secret
  
-        var spotify = new Spotify({
-            id: '1740da635c3c49d4b9f3caca4241631d',
-            secret: 'dad1503459d14371845d1449bad12204'
-        });
+        var spotify = new Spotify(keys.spotify);
         
- 
         spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
