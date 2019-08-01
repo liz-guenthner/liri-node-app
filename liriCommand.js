@@ -11,7 +11,7 @@ var nodeArgs = process.argv;
 
 // object called "liri"
 var liri = {
-    concertThis: function() {
+    concertThis: function(artistBandName) {
         // Create an empty variable for holding the artist or band name
         var artistBandName = process.argv[3];
         
@@ -82,6 +82,7 @@ var liri = {
         spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
+                return false;
             }
             console.log("\n----------- Spotify This Song App ------------\n");
             console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
@@ -97,7 +98,7 @@ var liri = {
      },
 
     // method called "movie-this" within "liri" object
-    movieThis: function() {
+    movieThis: function(movieName) {
         // Create an empty variable for holding the movie name
         var movieName = "";
 
@@ -179,12 +180,18 @@ var liri = {
             if (task === "spotify-this-song") {
                 // runSpotify(dataPoint);
                 console.log("spotify is in random.txt file!");
+                // dataPoint = songName;
+                // liri.spotifyThisSong(songName);
             } else if (task === "concert-this") {
                 // runConcert(dataPoint);
                 console.log("concert is in random.txt file!");
+                // dataPoint = artistBandName;
+                // liri.concertThis(artistBandName);
             } else {
                 // runMovie(dataPoint);
                 console.log("movie is in random.txt file!");
+                // dataPoint = movieName;
+                // liri.movieThis(movieName);
             }
         });
     }
