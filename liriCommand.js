@@ -125,7 +125,7 @@ var liri = {
         var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
         // logic for Mr. Nobody default
-        if (process.argv[3] === "Mr. Nobody") {
+        if (!process.argv[3]) {
             queryUrl = "http://www.omdbapi.com/?t=" + "mr+nobody" + "&y=&plot=short&apikey=trilogy";
         }
 
@@ -182,21 +182,78 @@ var liri = {
             var outputArray = data.split(",");
             var task = outputArray[0];
             var dataPoint = outputArray[1].replace(/"/g, "").replace(/\s/g, "+");
+            var spotify = new Spotify(keys.spotify);
             
-            console.log(task);
-            console.log(dataPoint);
+            // console.log(task);
+            // console.log(dataPoint);
 
             if (task === "spotify-this-song") {
 
-                console.log("spotify is in random.txt file!");
+                // console.log("spotify is in random.txt file!");
+                
+                spotify.search({ type: 'track', query: dataPoint, limit: 1 }, function(err, data) {
+                    if (err) {
+                        return console.log('Error occurred: ' + err);
+                    }
+                    console.log("\n----------- Do What It Says App - SPOTIFY ------------");
+                    console.log("----------------- (random.txt file) ------------------\n");
+                    console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Song name: " + dataPoint.replace(/\+/g, ' '));
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Album title: " + data.tracks.items[0].album.name);
+                    console.log("\n------------------------------------------------------\n");
+                });
 
             } else if (task === "concert-this") {
 
-                console.log("concert is in random.txt file!");
+                // console.log("concert is in random.txt file!");
+                
+                var queryUrl = "https://rest.bandsintown.com/artists/" + dataPoint + "/events?app_id=codingbootcamp";
 
+                axios.get(queryUrl).then(
+                function(response) {
+                    console.log("\n----------- Do What It Says App - CONCERT ------------");
+                    console.log("----------------- (random.txt file) ------------------\n");
+                    console.log("* Artist or Band Name: " + dataPoint.replace(/\+/g, ' '));
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Name of venue: " + response.data[0].venue.name);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Venue location: " + response.data[0].venue.city + ", " + response.data[0].venue.region);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Date of event: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
+                    console.log("\n------------------------------------------------------\n");
+                })
+                
             } else {
 
-                console.log("movie is in random.txt file!");
+                // console.log("movie is in random.txt file!");
+                
+                var queryUrl = "http://www.omdbapi.com/?t=" + dataPoint + "&y=&plot=short&apikey=trilogy";
+
+                axios.get(queryUrl).then(
+                function(response) {
+                    console.log("\n------------- Do What It Says App - MOVIE ------------");
+                    console.log("----------------- (random.txt file) ------------------\n");
+                    console.log("* Title of the movie: " + response.data.Title);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Year the movie came out: " + response.data.Year);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* IMDB Rating of the movie: " + response.data.imdbRating);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Rotten Tomatoes Rating of the movie: " + response.data.tomatoRating);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Country where the movie was produced: " + response.data.Country);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Language of the movie: " + response.data.Language);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Plot of the movie: " + response.data.Plot);
+                    console.log("\n------------------------------------------------------\n");
+                    console.log("* Actors in the movie: " + response.data.Actors);
+                    console.log("\n------------------------------------------------------\n");
+                })
 
             }
         });
@@ -205,3 +262,4 @@ var liri = {
 
 // export "liri" object
 module.exports = liri;
+
