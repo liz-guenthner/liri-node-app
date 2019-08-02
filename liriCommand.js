@@ -63,38 +63,47 @@ var liri = {
     },
 
     spotifyThisSong: function(songName) {
+        // Create an empty variable for holding the client id and client secret
+        var spotify = new Spotify(keys.spotify);
         // Create an empty variable for holding the song name
         var songName = process.argv[3];
 
-        // Loop through all the words in the node argument
-        // And do a little for-loop magic to handle the inclusion of "+"s
-        for (var i = 3; i < nodeArgs.length; i++) {
-            if (i > 3 && i < nodeArgs.length) {
-                songName = songName + "+" + nodeArgs[i];
-            } else {
-                songName = nodeArgs[i];
+        if (process.argv[3]) {
+            // Loop through all the words in the node argument
+            // And do a little for-loop magic to handle the inclusion of "+"s
+            for (var i = 3; i < nodeArgs.length; i++) {
+                if (i > 3 && i < nodeArgs.length) {
+                    songName = songName + "+" + nodeArgs[i];
+                } else {
+                    songName = nodeArgs[i];
+                }
             }
+            
+            spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
+                if (err) {
+                    return console.log('Error occurred: ' + err);
+                }
+                console.log("\n----------- Spotify This Song App ------------\n");
+                console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
+                console.log("\n----------------------------------------------\n");
+                console.log("* Song name: " + songName.replace(/\+/g, ' '));
+                console.log("\n----------------------------------------------\n");
+                console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
+                console.log("\n----------------------------------------------\n");
+                console.log("* Album title: " + data.tracks.items[0].album.name);
+                console.log("\n----------------------------------------------\n");
+            });
+        } else {
+                console.log("\n----------- Spotify This Song App ------------\n");
+                console.log("* Artist(s): Ace of Base");
+                console.log("\n----------------------------------------------\n");
+                console.log("* Song name: All That She Wants");
+                console.log("\n----------------------------------------------\n");
+                console.log("* Preview link of song: https://p.scdn.co/mp3-preview/b176774bc04182501c2d5d201afda143b1193f31?cid=1740da635c3c49d4b9f3caca4241631d");
+                console.log("\n----------------------------------------------\n");
+                console.log("* Album title: The Sign (US Album) [Remastered]");
+                console.log("\n----------------------------------------------\n");
         }
-        // Create an empty variable for holding the client id and client secret
- 
-        var spotify = new Spotify(keys.spotify);
-        
-        spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
-            if (err) {
-                return console.log('Error occurred: ' + err);
-                return false;
-            }
-            console.log("\n----------- Spotify This Song App ------------\n");
-            console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
-            console.log("\n----------------------------------------------\n");
-            console.log("* Song name: " + songName.replace(/\+/g, ' '));
-            console.log("\n----------------------------------------------\n");
-            console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
-            console.log("\n----------------------------------------------\n");
-            console.log("* Album title: " + data.tracks.items[0].album.name);
-            console.log("\n----------------------------------------------\n");
-
-        });
      },
 
     // method called "movie-this" within "liri" object
@@ -178,20 +187,17 @@ var liri = {
             console.log(dataPoint);
 
             if (task === "spotify-this-song") {
-                // runSpotify(dataPoint);
+
                 console.log("spotify is in random.txt file!");
-                // dataPoint = songName;
-                // liri.spotifyThisSong(songName);
+
             } else if (task === "concert-this") {
-                // runConcert(dataPoint);
+
                 console.log("concert is in random.txt file!");
-                // dataPoint = artistBandName;
-                // liri.concertThis(artistBandName);
+
             } else {
-                // runMovie(dataPoint);
+
                 console.log("movie is in random.txt file!");
-                // dataPoint = movieName;
-                // liri.movieThis(movieName);
+
             }
         });
     }
