@@ -29,7 +29,6 @@ var liri = {
             artistBandName = readMeConcertName;
         }
 
-        
         // Then run a request with axios to the Bands In Town API with the arist or band name specified
         var queryUrl = "https://rest.bandsintown.com/artists/" + artistBandName + "/events?app_id=codingbootcamp";
 
