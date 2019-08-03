@@ -119,3 +119,16 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
 
 ## Screenshots
 
+   1. [concertThis](https://github.com/liz-guenthner/liri-node-app/blob/master/1-concert-this.jpg)
+   
+   * [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
+
+   * [Spotify API](https://developer.spotify.com/)   
+
+   * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+
+   * [Axios](https://www.npmjs.com/package/axios)
+
+   * [Moment](https://www.npmjs.com/package/moment)
+
+   * [DotEnv](https://www.npmjs.com/package/dotenv)
