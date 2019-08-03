@@ -1,13 +1,4 @@
-// Example recursive function
-// function revStr(str){
-//     if (str === '') return '';
-//     return revStr(str.substr(1)) + str[0];
-//   }
-//   revStr('cat');
-// tac
-
-
-  // declare all required variables
+// declare all required variables
 var fs = require("fs");
 var dotenv = require("dotenv").config();
 var keys = require("./keys.js");
