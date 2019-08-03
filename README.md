@@ -119,16 +119,14 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
 
 ## Screenshots
 
-   1. [concertThis](https://github.com/liz-guenthner/liri-node-app/blob/master/1-concert-this.jpg)
+   1. [Concert This - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/1-concert-this.jpg)
    
-   * [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
+   2. [Spotify This Song - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/2-spotify-this-song.jpg)
 
-   * [Spotify API](https://developer.spotify.com/)   
+   3. [Movie This - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/3-movie-this.jpg)
 
-   * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+   4. [Do What It Says SPOTIFY - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/4-do-what-it-says-SPOTIFY.jpg)  
 
-   * [Axios](https://www.npmjs.com/package/axios)
+   5. [Do What It Says CONCERT - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/5-do-what-it-says-CONCERT.jpg) 
 
-   * [Moment](https://www.npmjs.com/package/moment)
-
-   * [DotEnv](https://www.npmjs.com/package/dotenv)
+   6. [Do What It Says MOVIE - screenshot](https://github.com/liz-guenthner/liri-node-app/blob/master/6-do-what-it-says-MOVIE.jpg) 
