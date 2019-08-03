@@ -71,51 +71,50 @@ var liri = {
         // Create an empty variable for holding the song name
         var songName = "";
 
-        // logic for Ace of Base default
-        if (process.argv[3] == undefined && readMeSongName == undefined) {
-            
-            queryUrl = "http://www.omdbapi.com/?t=" + "mr+nobody" + "&y=&plot=short&apikey=trilogy";
+        // Loop through all the words in the node argument
+        // And do a little for-loop magic to handle the inclusion of "+"s
+        for (var i = 3; i < nodeArgs.length; i++) {
+            if (i > 3 && i < nodeArgs.length) {
+                songName = songName + "+" + nodeArgs[i];
+            } else {
+                songName = nodeArgs[i];
+            }
         }
-        // if (process.argv[3]) {
-            // Loop through all the words in the node argument
-            // And do a little for-loop magic to handle the inclusion of "+"s
-            for (var i = 3; i < nodeArgs.length; i++) {
-                if (i > 3 && i < nodeArgs.length) {
-                    songName = songName + "+" + nodeArgs[i];
-                } else {
-                    songName = nodeArgs[i];
-                }
-            }
 
-            if (readMeSongName) {
-                songName = readMeSongName;
-            }
-            
-            spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
-                if (err) {
-                    return console.log('Error occurred: ' + err);
-                }
-                console.log("\n----------- Spotify This Song App ------------\n");
-                console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
-                console.log("\n----------------------------------------------\n");
-                console.log("* Song name: " + songName.replace(/\+/g, ' '));
-                console.log("\n----------------------------------------------\n");
-                console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
-                console.log("\n----------------------------------------------\n");
-                console.log("* Album title: " + data.tracks.items[0].album.name);
-                console.log("\n----------------------------------------------\n");
-            });
-        // } else {
-                // console.log("\n----------- Spotify This Song App ------------\n");
-                // console.log("* Artist(s): Ace of Base");
-                // console.log("\n----------------------------------------------\n");
-                // console.log("* Song name: All That She Wants");
-                // console.log("\n----------------------------------------------\n");
-                // console.log("* Preview link of song: https://p.scdn.co/mp3-preview/b176774bc04182501c2d5d201afda143b1193f31?cid=1740da635c3c49d4b9f3caca4241631d");
-                // console.log("\n----------------------------------------------\n");
-                // console.log("* Album title: The Sign (US Album) [Remastered]");
-                // console.log("\n----------------------------------------------\n");
+        if (readMeSongName) {
+            songName = readMeSongName;
+        }
+        
+        // logic for Ace of Base default
+        // if (process.argv[3] === undefined || readMeSongName === undefined) {
+        //     console.log("\n----------- Spotify This Song App ------------\n");
+        //     console.log("* Artist(s): Ace of Base");
+        //     console.log("\n----------------------------------------------\n");
+        //     console.log("* Song name: All That She Wants");
+        //     console.log("\n----------------------------------------------\n");
+        //     console.log("* Preview link of song: https://p.scdn.co/mp3-preview/b176774bc04182501c2d5d201afda143b1193f31?cid=1740da635c3c49d4b9f3caca4241631d");
+        //     console.log("\n----------------------------------------------\n");
+        //     console.log("* Album title: The Sign (US Album) [Remastered]");
+        //     console.log("\n----------------------------------------------\n");
+        //     return false;
         // }
+        
+            
+        spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+            console.log("\n----------- Spotify This Song App ------------\n");
+            console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
+            console.log("\n----------------------------------------------\n");
+            console.log("* Song name: " + songName.replace(/\+/g, ' '));
+            console.log("\n----------------------------------------------\n");
+            console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
+            console.log("\n----------------------------------------------\n");
+            console.log("* Album title: " + data.tracks.items[0].album.name);
+            console.log("\n----------------------------------------------\n");
+        });
+
      },
 
     // method called "movie-this" within "liri" object
@@ -197,22 +196,6 @@ var liri = {
                 liri.spotifyThisSong(dataPoint);
                 console.log("\n----------- Do What It Says App - Spotify --------------");
                 console.log("------------------- (random.txt file) ------------------\n");
-                
-                // spotify.search({ type: 'track', query: dataPoint, limit: 1 }, function(err, data) {
-                //     if (err) {
-                //         return console.log('Error occurred: ' + err);
-                //     }
-                //     console.log("\n----------- Do What It Says App - SPOTIFY ------------");
-                //     console.log("----------------- (random.txt file) ------------------\n");
-                //     console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
-                //     console.log("\n------------------------------------------------------\n");
-                //     console.log("* Song name: " + dataPoint.replace(/\+/g, ' '));
-                //     console.log("\n------------------------------------------------------\n");
-                //     console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
-                //     console.log("\n------------------------------------------------------\n");
-                //     console.log("* Album title: " + data.tracks.items[0].album.name);
-                //     console.log("\n------------------------------------------------------\n");
-                // });
 
             } else if (task === "concert-this") {
 
