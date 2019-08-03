@@ -91,12 +91,19 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
         * This will output the following information to your terminal/bash window:
 
               * Title of the movie.
+
               * Year the movie came out.
+
               * IMDB Rating of the movie.
+
               * Rotten Tomatoes Rating of the movie.
+
               * Country where the movie was produced.
+
               * Language of the movie.
+              
               * Plot of the movie.
+
               * Actors in the movie.
 
         * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
