@@ -2,7 +2,9 @@
 
 ## Links
 https://github.com/liz-guenthner/liri-node-app
+
 https://github.com/liz-guenthner/lizGuenthnerResume
+
 https://liz-guenthner.github.io/lizGuenthnerResume/
 
 ## Overview
