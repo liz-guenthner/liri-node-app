@@ -9,6 +9,7 @@ https://liz-guenthner.github.io/lizGuenthnerResume/
 
 Node application for command line that scrapes OMDB, Bands in Town and Spotify API's. The app is triggered by user input and displays data from each API within the terminal. Uses axios, moment, dotenv, node-spotify-api and fs npm packages.
 
+
 ## Organization
 
 1. `package.json` file is required for installing third party npm packages and saving their version numbers.
@@ -26,7 +27,7 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
    
    * [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
 
-   * [Spotify API](http://www.artists.bandsintown.com/bandsintown-api)   
+   * [Spotify API](https://developer.spotify.com/)   
 
    * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
 
@@ -36,20 +37,14 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
 
    * [DotEnv](https://www.npmjs.com/package/dotenv)
 
-   
-## Problem
-
-## Overview/Organization
 
 ## Instructions
 
+
 ## Screenshots
 
-## Role
 
 
-
-  ```
 
 9. Make it so liri.js can take in one of the following commands:
 
