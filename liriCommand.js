@@ -76,33 +76,24 @@ var liri = {
         }
         
         // logic for Ace of Base default
-        // if (process.argv[3] === undefined || readMeSongName === undefined) {
-        //     console.log("\n----------- Spotify This Song App ------------\n");
-        //     console.log("* Artist(s): Ace of Base");
-        //     console.log("\n----------------------------------------------\n");
-        //     console.log("* Song name: All That She Wants");
-        //     console.log("\n----------------------------------------------\n");
-        //     console.log("* Preview link of song: https://p.scdn.co/mp3-preview/b176774bc04182501c2d5d201afda143b1193f31?cid=1740da635c3c49d4b9f3caca4241631d");
-        //     console.log("\n----------------------------------------------\n");
-        //     console.log("* Album title: The Sign (US Album) [Remastered]");
-        //     console.log("\n----------------------------------------------\n");
-        //     return false;
-        // }
+        if (!songName) {
+            songName = "the+sign";
+        }
         
             
         spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             }
-            console.log("\n----------- Spotify This Song App ------------\n");
+            console.log("\n---------------- Spotify This Song App -----------------\n");
             console.log("* Artist(s): " + data.tracks.items[0].artists[0].name);
-            console.log("\n----------------------------------------------\n");
+            console.log("\n--------------------------------------------------------\n");
             console.log("* Song name: " + songName.replace(/\+/g, ' '));
-            console.log("\n----------------------------------------------\n");
+            console.log("\n--------------------------------------------------------\n");
             console.log("* Preview link of song: " + data.tracks.items[0].preview_url);
-            console.log("\n----------------------------------------------\n");
+            console.log("\n--------------------------------------------------------\n");
             console.log("* Album title: " + data.tracks.items[0].album.name);
-            console.log("\n----------------------------------------------\n");
+            console.log("\n--------------------------------------------------------\n");
         });
 
      },

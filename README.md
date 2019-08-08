@@ -84,7 +84,7 @@ Node application for command line that scrapes OMDB, Bands in Town and Spotify A
 
               * The album that the song is from
 
-        * If no song is provided then your program will default to "The Sign" by Ace of Base.
+        * If no song is provided then your program will default to "The Sign" by Harry Styles.
 
    * `node liri.js movie-this <movie name here>`
 
